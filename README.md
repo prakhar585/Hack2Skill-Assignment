@@ -81,3 +81,7 @@ and add drag and drop and cart functionality to handle the website.
 will add Out of stock in red 
 
 Added Pagination now adding drag and drop in table
+
+added drag and drop functionality to the table 
+
+created Cart Context 
