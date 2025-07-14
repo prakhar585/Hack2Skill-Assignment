@@ -52,13 +52,13 @@ const renderCellContent = (column, item, callHandleAddtoCart) => {
   switch (column.id) {
     case "id":
       return (
-        <td className="px-1 py-3 text-xs  desktop:px-6 desktop:py-4 desktop:text-lg text-center text-gray-500">
+        <td className="px-1 py-3 text-xs  desktop:px-6 desktop:py-4 desktop:text-md text-center text-gray-500">
           {item.id}.
         </td>
       );
     case "product":
       return (
-        <td className="px-1 py-3 text-xs desktop:px-6 desktop:py-4 desktop:text-lg">
+        <td className="px-1 py-3 text-xs desktop:px-6 desktop:py-4 desktop:text-md">
           <div className="flex items-center justify-center">
             <img
               className="tablet:w-8 tablet:h-8  desktop:w-20 desktop:h-20 rounded-full object-cover "
@@ -70,25 +70,25 @@ const renderCellContent = (column, item, callHandleAddtoCart) => {
       );
     case "name":
       return (
-        <td className="px-1 py-3 text-xs desktop:px-6 desktop:py-4 desktop:text-lg text-center text-gray-500">
+        <td className="px-1 py-3 text-xs desktop:px-6 desktop:py-4 desktop:text-md text-center font-semibold text-gray-500">
           {item.name}
         </td>
       );
     case "category":
       return (
-        <td className="px-1 py-3 text-xs desktop:px-6 desktop:py-4 desktop:text-lg text-center text-gray-500">
+        <td className="px-1 py-3 text-xs desktop:px-6 desktop:py-4 desktop:text-md text-center text-gray-500">
           {item.category}
         </td>
       );
     case "price":
       return (
-        <td className="px-1 py-3 text-xs desktop:px-6 desktop:py-4 desktop:text-lg text-center font-semibold text-gray-900">
+        <td className="px-1 py-3 text-xs desktop:px-6 desktop:py-4 desktop:text-md text-center font-semibold text-gray-900">
           ${item.price}
         </td>
       );
     case "stock":
       return (
-        <td className="px-1 py-3 text-xs desktop:px-6 desktop:py-4 desktop:text-lg text-center  text-gray-500">
+        <td className="px-1 py-3 text-xs desktop:px-6 desktop:py-4 desktop:text-md text-center  text-gray-500">
           {item.stock} units
         </td>
       );
@@ -109,7 +109,7 @@ const renderCellContent = (column, item, callHandleAddtoCart) => {
         px-2 py-1 text-xs
         mobile:px-3 mobile:py-2 mobile:text-sm
         tablet:px-4 tablet:py-2 tablet:text-sm
-        desktop:px-5 desktop:py-2 desktop:text-base
+        desktop:px-5 desktop:py-2 desktop:text-md
         rounded-md font-medium transition-colors
       "
             >
@@ -221,7 +221,7 @@ const ProductTable = ({ tableData }) => {
                   onDragLeave={handleDragLeave}
                   onDrop={(e) => handleDrop(e, index)}
                   onDragEnd={handleDragEnd}
-                  className="px-1  desktop:px-6 desktop:py-3 text-center text-xs font-medium text-gray-500 uppercase hover:cursor-move"
+                  className="px-1  desktop:px-6 desktop:py-3 desktop:text-md border-2 text-center text-xs  font-medium text-gray-500 uppercase hover:cursor-move"
                 >
                   {column.title}
                 </th>
