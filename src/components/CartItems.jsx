@@ -13,17 +13,7 @@ const CartItems = ({ cartItem }) => {
     }
 
   return (
-    /*
-        {
-          id: action.payload.id,
-          image: action.payload.image,
-          name: action.payload.name,
-          price: action.payload.price,
-          description: action.payload.description,
-          quantity: 1,
-        };
-
-    */
+  
     <div className="py-5 my-2 px-2 text-xs desktop:text-md  shadow-md">
       <div className="flex ">
         <div className="flex basis-1/3 items-center">

@@ -14,24 +14,6 @@ const ProductDashboard = () => {
   const [dataShown, setDataShown] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
-  //stats
-  const totalProducts = products.length;
-  const totalRevenue = useMemo(() => {
-    let revenue = 0;
-    products.map((item) => item.price + revenue);
-
-    return revenue;
-  }, [products]);
-
-  // const lowStockItem = useMemo(()=>{
-    
-  //   products.map((item)=>{
-  //     if(item.)
-  //   })
-  // })
-
- 
-
   // a function to slice the data and send it to display
   const sliceData = (products) => {
     const initialIndex = (currentPage - 1) * 10;
@@ -51,8 +33,6 @@ const ProductDashboard = () => {
     const slicedData = sliceData(filteredData);
     setDataShown(slicedData);
   }, [currentPage, products, searchTerm]);
-
-  //import dev Data
 
   // Sidebar Handlers from header to sidebar
   const handleSideBar = () => {
