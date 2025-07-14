@@ -24,20 +24,20 @@ const CartItems = ({ cartItem }) => {
         };
 
     */
-    <div className="py-5 my-2 px-2 text-xs desktop:text-md border-2 shadow-sm">
+    <div className="py-5 my-2 px-2 text-xs desktop:text-md  shadow-md">
       <div className="flex ">
-        <div className="flex basis-1/3">
-          <img className="rounded-full mx-auto w-16 h-16 desktop:w-20 desktop:h-20 "src={cartItem.image} />
+        <div className="flex basis-1/3 items-center">
+          <img className="rounded-full mx-auto w-20 h-20 desktop:w-20 desktop:h-20 "src={cartItem.image} />
         </div>
 
         <div className="flex flex-col basis-2/3">
-          <div>{cartItem.name}</div>
-          <div>Price: {cartItem.price}</div>
-          <div>{cartItem.description}</div>
-          <div className="flex justify-center items-center gap-2 mt-2">
-            <button className="bg-blue-800 text-blue-100 w-8 py-2 text-md rounded-md" onClick={()=>handleRemoveFromCart(cartItem)}>-</button>
-            <span className="text-md border-y-2 px-2 py-2">{cartItem.quantity}</span>
-            <button className="bg-blue-800 text-blue-100 w-8 py-2 text-md rounded-md" onClick={()=>handleAddToCart(cartItem)}>+</button>
+          <div className="text-md font-semibold my-1">{cartItem.name}</div>
+          <div className="text-md font-semibold my-1">Price: ${cartItem.price}</div>
+          <div className="text-md font-semibold my-1">{cartItem.description}</div>
+          <div className=" items-center  mt-2">
+            <button className="bg-indigo-600 text-white w-5 text-lg rounded-sm" onClick={()=>handleRemoveFromCart(cartItem)}>-</button>
+            <span className="text-md font-semibold px-2 w-5">{cartItem.quantity}</span>
+            <button className="bg-indigo-600 text-white w-5 text-lg rounded-sm" onClick={()=>handleAddToCart(cartItem)}>+</button>
           </div>
         </div>
       </div>

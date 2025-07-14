@@ -147,6 +147,7 @@ const ProductTable = ({ tableData }) => {
 
   const handleAddToCart = (item) => {
     console.log(`add to cart was called with Item ${item}`);
+    window.alert('Item added to your Cart');
     addToCart(item);
   };
 

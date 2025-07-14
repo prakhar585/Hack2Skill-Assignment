@@ -1,42 +1,98 @@
 // Efficient Mock Data Generator using Maps and Sets
 // Optimized for generating 1000+ product records
 
+export const categories = new Map([
+  [0, "Electronics"],
+  [1, "Clothing"],
+  [2, "Books"],
+  [3, "Home & Garden"],
+  [4, "Sports & Outdoors"],
+  [5, "Beauty & Personal Care"],
+  [6, "Toys & Games"],
+  [7, "Automotive"],
+  [8, "Health & Wellness"],
+  [9, "Food & Beverages"],
+]);
+
 const generateMockProducts = (count = 1000) => {
   // Pre-create reference data using Maps for O(1) access
-  const categories = new Map([
-    [0, 'Electronics'],
-    [1, 'Clothing'],
-    [2, 'Books'],
-    [3, 'Home & Garden'],
-    [4, 'Sports & Outdoors'],
-    [5, 'Beauty & Personal Care'],
-    [6, 'Toys & Games'],
-    [7, 'Automotive'],
-    [8, 'Health & Wellness'],
-    [9, 'Food & Beverages']
-  ]);
 
   const statuses = new Map([
-    [0, 'Active'],
-    [1, 'Inactive'],
-    [2, 'Discontinued'],
-    [3, 'Out of Stock']
+    [0, "Active"],
+    [1, "Inactive"],
+    [2, "Discontinued"],
+    [3, "Out of Stock"],
   ]);
 
   // Product name components for efficient random generation
   const adjectives = [
-    'Premium', 'Deluxe', 'Professional', 'Ultra', 'Advanced', 'Smart', 'Eco',
-    'Compact', 'Portable', 'Wireless', 'Digital', 'Classic', 'Modern', 'Luxury',
-    'Essential', 'Heavy-duty', 'Lightweight', 'Durable', 'Flexible', 'Innovative'
+    "Premium",
+    "Deluxe",
+    "Professional",
+    "Ultra",
+    "Advanced",
+    "Smart",
+    "Eco",
+    "Compact",
+    "Portable",
+    "Wireless",
+    "Digital",
+    "Classic",
+    "Modern",
+    "Luxury",
+    "Essential",
+    "Heavy-duty",
+    "Lightweight",
+    "Durable",
+    "Flexible",
+    "Innovative",
   ];
 
   const baseNames = [
-    'Headphones', 'Smartphone', 'Laptop', 'Tablet', 'Camera', 'Speaker', 'Watch',
-    'Keyboard', 'Mouse', 'Monitor', 'Printer', 'Router', 'Charger', 'Cable',
-    'Backpack', 'Jacket', 'Shoes', 'Shirt', 'Pants', 'Hat', 'Sunglasses',
-    'Book', 'Magazine', 'Notebook', 'Pen', 'Pencil', 'Marker', 'Highlighter',
-    'Chair', 'Table', 'Lamp', 'Pillow', 'Blanket', 'Towel', 'Mug', 'Plate',
-    'Bottle', 'Bag', 'Box', 'Tool', 'Kit', 'Set', 'Pack', 'Bundle'
+    "Headphones",
+    "Smartphone",
+    "Laptop",
+    "Tablet",
+    "Camera",
+    "Speaker",
+    "Watch",
+    "Keyboard",
+    "Mouse",
+    "Monitor",
+    "Printer",
+    "Router",
+    "Charger",
+    "Cable",
+    "Backpack",
+    "Jacket",
+    "Shoes",
+    "Shirt",
+    "Pants",
+    "Hat",
+    "Sunglasses",
+    "Book",
+    "Magazine",
+    "Notebook",
+    "Pen",
+    "Pencil",
+    "Marker",
+    "Highlighter",
+    "Chair",
+    "Table",
+    "Lamp",
+    "Pillow",
+    "Blanket",
+    "Towel",
+    "Mug",
+    "Plate",
+    "Bottle",
+    "Bag",
+    "Box",
+    "Tool",
+    "Kit",
+    "Set",
+    "Pack",
+    "Bundle",
   ];
 
   // Use Set for tracking unique IDs (O(1) lookup)
@@ -52,7 +108,7 @@ const generateMockProducts = (count = 1000) => {
   // Generate products efficiently
   for (let i = 0; i < count; i++) {
     // Generate unique ID efficiently
-    let id= i+1;
+    let id = i + 1;
     // do {
     //   id = Math.floor(Math.random() * 100000) + 1;
     // } while (usedIds.has(id));
@@ -68,16 +124,16 @@ const generateMockProducts = (count = 1000) => {
     let basePrice;
     const category = categories.get(categoryIndex);
     switch (category) {
-      case 'Electronics':
+      case "Electronics":
         basePrice = Math.random() * 2000 + 50; // $50-$2050
         break;
-      case 'Clothing':
+      case "Clothing":
         basePrice = Math.random() * 200 + 20; // $20-$220
         break;
-      case 'Books':
+      case "Books":
         basePrice = Math.random() * 50 + 10; // $10-$60
         break;
-      case 'Home & Garden':
+      case "Home & Garden":
         basePrice = Math.random() * 500 + 25; // $25-$525
         break;
       default:
@@ -88,13 +144,15 @@ const generateMockProducts = (count = 1000) => {
     let stock;
     const stockRandom = Math.random();
     if (stockRandom < 0.1) stock = 0; // 10% out of stock
-    else if (stockRandom < 0.3) stock = Math.floor(Math.random() * 5) + 1; // 20% low stock
-    else if (stockRandom < 0.8) stock = Math.floor(Math.random() * 45) + 5; // 50% medium stock
+    else if (stockRandom < 0.3)
+      stock = Math.floor(Math.random() * 5) + 1; // 20% low stock
+    else if (stockRandom < 0.8)
+      stock = Math.floor(Math.random() * 45) + 5; // 50% medium stock
     else stock = Math.floor(Math.random() * 200) + 50; // 20% high stock
 
     // Adjust status based on stock
     let finalStatus = statuses.get(statusIndex);
-    if (stock === 0) finalStatus = 'Out of Stock';
+    if (stock === 0) finalStatus = "Out of Stock";
 
     // Create product object with optimized structure
     const product = {
@@ -106,10 +164,14 @@ const generateMockProducts = (count = 1000) => {
       stock,
       status: finalStatus,
       // Additional fields for enhanced functionality
-      description: `High-quality ${baseNames[baseNameIndex].toLowerCase()} perfect for everyday use`,
-      sku: `SKU-${String(id).padStart(6, '0')}`,
-      createdAt: new Date(Date.now() - Math.random() * 365 * 24 * 60 * 60 * 1000).toISOString(),
-      updatedAt: new Date().toISOString()
+      description: `High-quality ${baseNames[
+        baseNameIndex
+      ].toLowerCase()} perfect for everyday use`,
+      sku: `SKU-${String(id).padStart(6, "0")}`,
+      createdAt: new Date(
+        Date.now() - Math.random() * 365 * 24 * 60 * 60 * 1000
+      ).toISOString(),
+      updatedAt: new Date().toISOString(),
     };
 
     products.push(product);
@@ -124,6 +186,7 @@ export const generateMediumDataset = () => generateMockProducts(250);
 export const generateLargeDataset = () => generateMockProducts(1000);
 export const generateXLDataset = () => generateMockProducts(2500);
 
+export const categorySize = categories.size;
 // Export the main generator function
 export default generateMockProducts;
 
@@ -132,11 +195,13 @@ export const benchmarkDataGeneration = (count = 1000) => {
   console.time(`Generating ${count} products`);
   const products = generateMockProducts(count);
   console.timeEnd(`Generating ${count} products`);
-  
+
   console.log(`✅ Generated ${products.length} products`);
-  console.log(`📊 Memory usage: ~${Math.round(JSON.stringify(products).length / 1024)} KB`);
+  console.log(
+    `📊 Memory usage: ~${Math.round(JSON.stringify(products).length / 1024)} KB`
+  );
   console.log(`🔍 Sample product:`, products[0]);
-  
+
   return products;
 };
 

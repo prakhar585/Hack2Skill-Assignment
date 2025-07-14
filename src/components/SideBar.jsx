@@ -37,9 +37,9 @@ const SideBar = ({ showSideBar, onClose }) => {
             <CartItems cartItem={item} />
           ))}
         </div>
-        <div className="py-5 my-3 px-4">
-          <div className="my-1">Total Items: {totalQuantity}</div>
-          <div className="my-1">Total Price: {totalPrice}</div>
+        <div className="py-5 my-3 px-4 w-full">
+          <div className="my-1 bg-indigo-600 text-white py-2 px-2">Total Items: {totalQuantity}</div>
+          <div className="my-1 bg-indigo-600 text-white py-2 px-2">Total Price: ${totalPrice}</div>
         </div>
       </div>
     </>,

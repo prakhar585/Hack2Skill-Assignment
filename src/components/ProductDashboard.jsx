@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useMemo } from "react";
 import Header from "./Header";
 import SideBar from "./SideBar";
 import Stats from "./Stats";
@@ -13,6 +13,25 @@ const ProductDashboard = () => {
   const [products, setProducts] = useState(() => generateMediumDataset(250));
   const [dataShown, setDataShown] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+
+  //stats
+  const totalProducts = products.length;
+  const totalRevenue = useMemo(() => {
+    let revenue = 0;
+    products.map((item) => item.price + revenue);
+
+    return revenue;
+  }, [products]);
+
+  // const lowStockItem = useMemo(()=>{
+    
+  //   products.map((item)=>{
+  //     if(item.)
+  //   })
+  // })
+
+ 
+
   // a function to slice the data and send it to display
   const sliceData = (products) => {
     const initialIndex = (currentPage - 1) * 10;
